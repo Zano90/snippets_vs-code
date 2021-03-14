@@ -1,0 +1,263 @@
+/*
+Variables:
+----------
+
+Usage: $VARIABLE_PLACEHOLDER
+
+General:
+-----------------+-----------------------------------+-----------------------------------------------------------------
+   Placeholder   |              example              | description
+-----------------+-----------------------------------+-----------------------------------------------------------------
+TM_SELECTED_TEXT | ...                               | The currently selected text or the empty string
+TM_CURRENT_LINE  | ...                               | The contents of the current line
+TM_CURRENT_WORD  | ...                               | The contents of the word under cursor or the empty string
+TM_LINE_INDEX    | 0                                 | The zero-index based line number
+TM_LINE_NUMBER   | 1                                 | The one-index based line number
+TM_FILENAME      | filename.extension                | The filename of the current document
+TM_FILENAME_BASE | filename                          | The filename of the current document without its extensions
+TM_DIRECTORY     | ~/Library/.../folder              | The directory of the current document
+TM_FILEPATH      | ~/Library/.../folder/fielname.ext | The full file path of the current document
+CLIPBOARD        | copied text                       | The contents of your clipboard
+WORKSPACE_NAME   | Workspace/Folder                  | The name of the opened workspace or folder
+-----------------+-----------------------------------+-----------------------------------------------------------------
+
+date and time:
+-------------------------+-------------+-----------------------------------------------------------------
+       Placeholder       |   example   | description
+-------------------------+-------------+-----------------------------------------------------------------
+CURRENT_YEAR             | 1970        | The current year
+CURRENT_YEAR_SHORT       | 70          | The current year's last two digits
+CURRENT_MONTH            | 01          | The month as two digits (example '02')
+CURRENT_MONTH_NAME       | January     | The full name of the month (example 'July')
+CURRENT_MONTH_NAME_SHORT | Jan         | The short name of the month (example 'Jul')
+CURRENT_DATE             | 01          | The day of the month
+CURRENT_DAY_NAME         | Monday      | The name of day (example 'Monday')
+CURRENT_DAY_NAME_SHORT   | Mon         | The short name of the day (example 'Mon')
+CURRENT_HOUR             | 15          | The current hour in 24-hour clock format
+CURRENT_MINUTE           | 30          | The current minute
+CURRENT_SECOND           | 00          | The current second
+CURRENT_SECONDS_UNIX     | 1581865010  | The number of seconds since the Unix epoch
+-------------------------+-------------+-----------------------------------------------------------------
+
+line or block comments, honoring the current language:
+---------------------+---------+-----------------------------------------------------------------
+     Placeholder     | example | description
+---------------------+---------+-----------------------------------------------------------------
+BLOCK_COMMENT_START  | <!--    | Starting Block comment symbol, honoring the current language
+BLOCK_COMMENT_END    | -->     | Ending Block comment symbol, honoring the current language
+LINE_COMMENT         | //      | Single Line comment symbol, honoring the current language
+---------------------+---------+-----------------------------------------------------------------
+*/
+{
+	"Prettier Default Config": {
+		"prefix": "#prettier#config",
+		"body": [
+			"{",
+			"    \"printWidth\": 140,",
+			"    \"tabWidth\": 4,",
+			"    \"useTabs\": false,",
+			"    \"semi\": false,",
+			"    \"singleQuote\": true,",
+			"    \"quoteProps\": \"consistent\",",
+			"    \"jsxSingleQuote\": true,",
+			"    \"trailingComma\": \"es5\",",
+			"    \"bracketSpacing\": true,",
+			"    \"jsxBracketSameLine\": false,",
+			"    \"arrowParens\": \"always\",",
+			"    \"requirePragma\": true,",
+			"    \"insertPragma\": true,",
+			"    \"htmlWhitespaceSensitivity\": \"css\",",
+			"    \"vueIndentScriptAndStyle\": false,",
+			"    \"endOfLine\": \"auto\",",
+			"    \"overrides\": [",
+			"        {",
+			"            \"files\": \"**/lwc/**/*.html\",",
+			"            \"options\": {",
+			"                \"parser\": \"lwc\"",
+			"            }",
+			"        },",
+			"        {",
+			"            \"files\": \"*.{cmp,page,component}\",",
+			"            \"options\": {",
+			"                \"parser\": \"html\"",
+			"            }",
+			"        }",
+			"    ]",
+			"}"
+		],
+		"description": "Prettier Default Config"
+	},
+	"Apex > Class": {
+		"prefix": "#apex#class",
+		"body": [
+			"/** ==================================================================================================================",
+			" * (c) by ${1:Oliver Naimann}, Germany $CURRENT_YEAR, All rights reserved",
+			" * $TM_FILENAME",
+			" * @author       ${1:Oliver Naimann}",
+			" * @email        ${2:onaimann90@gmail.com}",
+			" * @date         $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE ($CURRENT_DAY_NAME)",
+			" * @description  $3",
+			" * @sobjects     $4",
+			" * @todos        $5",
+			" * ",
+			" * @history ",
+			" *    version | date       | email                | description",
+			" *   ---------+------------+----------------------+------------------------------------------",
+			" *    0.1     | $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE | ${2:onaimann90@gmail.com} | initially creation ",
+			" * ",
+			" * ===================================================================================================================",
+			"**/",
+			"${6|public,private,global|} ${7|with sharing,without sharing,inherited sharing,virtual,abstract|} class $TM_FILENAME_BASE$ {8:implements INTERFACE_NAMES }${9:extends CLASS_NAMES }{",
+			"    //Class Properties",
+			"    // - Constants",
+			"    // - Variables",
+			"    ",
+			"    /*******************************************\\",
+			"     *              Class Methods              *",
+			"    \\*******************************************/",
+			"    ",
+			"    public $TM_FILENAME_BASE() {",
+			"        $0",
+			"    }",
+			"    ",
+			"    /********************************************\\",
+			"     *              Static Methods              *",
+			"    \\********************************************/",
+			"    ",
+			"    /*******************************************\\",
+			"     *              Inner Classes              *",
+			"    \\*******************************************/",
+			"    ",
+			"}"
+		],
+		"description": "Apex > Class"
+	},
+	"Apex > Class > Method": {
+		"prefix": "#apex#class#method",
+		"body": [
+			"/**",
+			" * ${1:METHOD_NAME}",
+			" * @author       ${2:Oliver Naimann}",
+			" * @date         $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE ($CURRENT_DAY_NAME_SHORT)",
+			" * @description  $3",
+			" * @param        ${7:PARAM01_TYPE} ${8:PARAM01_NAME} - ${9:PARAM01_DESCRIPTION}",
+			" *               e.g. ${10:PARAM01_EXAMPLE}",
+			" * @return       ${6:RETURN_TYPE} - ${11:RETURN_DESCRIPTION}",
+			" *               e.g. ${12:RETURN_EXAMPLE}",
+			" */",
+			"${4|public,private,protected,global|} ${5| ,static ,override ,override static |}${6:RETURN_TYPE} ${1:METHOD_NAME}(${7:PARAM01_TYPE} ${8:PARAM01_NAME}) {",
+			"    $0",
+			"}"
+		],
+		"description": "Class > Method"
+	},
+	"Apex > Class > Property": {
+		"prefix": "#apex#class#property",
+		"body": [
+			"${1|public,private,protected,global|} ${2:TYPE} ${3:PROPERTY_NAME};"
+		],
+		"description": "Class > Property"
+	},
+	"Apex > Class > Property > Getter/Setter": {
+		"prefix": "#apex#class#property#getset",
+		"body": [
+			"${1|public,protected,global|} ${2:TYPE} ${3:PROPERTY_NAME} { $1 get; $1 set; }"
+		],
+		"description": "Property > Getter/Setter"
+	},
+	"Apex > Class > Property > Custom Getter/Setter": {
+		"prefix": "#apex#class#property#getset#custom",
+		"body": [
+			"${1|public,protected,global|} ${2:TYPE} ${3:PROPERTY_NAME} {",
+			"    $1 get {",
+			"        ",
+			"    }",
+			"    $1 set {",
+			"        ",
+			"    }",
+			"}"
+		],
+		"description": "Property > Custom Getter/Setter"
+	},
+	"Apex > Var": {
+		"prefix": "#apex#var",
+		"body": "${1|public,private,protected,global|} ${2| ,static ,final ,final static |}${3:TYPE} ${4:VAR_NAME};",
+		"description": "Apex > Var"
+	},
+	"Apex > Var > List": {
+		"prefix": "#apex#var#list",
+		"body": [
+			"List<${2:TYPE}> list${1:NAME} = new List<${2:TYPE}>();"
+		],
+		"description": "Var > List"
+	},
+	"Apex > Var > List + init": {
+		"prefix": "#apex#var#list#init",
+		"body": [
+			"List<${2:TYPE}> list${1:NAME} = new List<${2:TYPE}>{ $3, $4 };"
+		],
+		"description": "Var > List + init"
+	},
+	"Apex > Var > Set": {
+		"prefix": "#apex#var#set",
+		"body": [
+			"Set<${2:TYPE}> set${1:NAME} = new Set<${2:TYPE}>();"
+		],
+		"description": "Var > Set"
+	},
+	"Apex > Var > Set + init": {
+		"prefix": "#apex#var#set#init",
+		"body": [
+			"Set<${2:TYPE}> set${1:NAME} = new Set<${2:TYPE}>{ $3, $4 };"
+		],
+		"description": "Var > Set + init"
+	},
+	"Apex > Var > Map": {
+		"prefix": "#apex#var#map",
+		"body": [
+			"Map<${2:TYPE}, ${3:TYPE}> map${1:NAME} = new Map<${2:TYPE}, ${3:TYPE}>();"
+		],
+		"description": "Var > Map"
+	},
+	"Apex > Var > Map + init": {
+		"prefix": "#apex#var#map#init",
+		"body": [
+			"Map<${2:TYPE}, ${3:TYPE}> map${1:NAME} = new Map<${2:TYPE}, ${3:TYPE}>{ ${4:KEY => ${5:VALUE}} };"
+		],
+		"description": "Var > Map + init"
+	},
+	"lwc > event > ShowToastEvent": {
+		"prefix": "#lwc#event#showToastEvent",
+		"body": [
+			"// import { ShowToastEvent } from 'lightning/platformShowToastEvent'",
+			"const toastEvent = new ShowToastEvent({",
+			"  // info:gray | success:green | warning:yellow | error:red",
+			"  variant: '${1|info,success,warning,error|}',",
+			"  // dismissable: visible until close or 3 sec elapsed | pester: 3 sec visible | sticky: visible until close",
+			"  mode: '${2|dismissable,pester,sticky|}',",
+			"  title: '${3:TITLE}',",
+			"  message: ${4|'MESSAGE','{1}'\\, messageData: ['MESSAGE'],'{KEY}'\\, messageData: {KEY: 'MESSAGE'}|}",
+			"})",
+			"this.dispatchEvent(toastEvent)"
+		],
+		"description": "lwc > event > ShowToastEvent"
+	},
+	"lwc > event > CustomEvent": {
+		"prefix": "#lwc#event#customEvent",
+		"body": [
+			"const customEvent = new CustomEvent(",
+			"  // on<name> e.g. 'event' -> onevent",
+			"  '${1:NAME}', { ",
+			"    // pass data through this event",
+			"    detail: ${2|{},{ATTRIBUTE: VALUE}|},",
+			"    // whether the event bubbles up through the DOM or not",
+			"    bubbles: false,",
+			"    // whether the event can pass through the shadow boundary",
+			"    composed: false",
+			"  }",
+			")",
+			"this.dispatchEvent(customEvent)"
+		],
+		"description": "lwc > event > CustomEvent"
+	}
+}
